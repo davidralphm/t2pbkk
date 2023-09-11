@@ -145,6 +145,85 @@ fastify.listen({ port }, function (err, address) {
 
 ## Templating
 
+### Express
+
+Template engine yang sering digunakan dengan Express adalah Pug. Pug dapat diinstall dengan menjalankan command berikut.
+`npm install --save pug`
+
+Setelah menginstall Pug, kita dapat menambahkan kode berikut agar dapat menggunakannya.
+``` js
+app.set('view engine', 'pug');
+app.set('views','./views');
+```
+
+Setelah itu, kita membuat directory dengan nama `views`. Di dalamnya, kita membuat file bernama `test.pug`. Di dalam file tersebut, kita dapat menambahkan kode berikut.
+``` pug
+doctype html
+html
+   head
+      title = "Hello World"
+   body
+      p.greetings#people Hello World!
+```
+
+Untuk merender template tersebut, kita dapat menambahkan kode berikut dalam app kita.
+``` js
+app.get('/test_template', function(req, res){
+   res.render('test');
+});
+```
+
+### Laravel
+
+Laravel menggunakan templating engine Blade. File template Blade menggunakan ekstensi `.blade.php`, dan disimpan dalam direktori `resources/views`. Untuk merender template yang telah dibuat, dapat menggunakan kode berikut.
+
+``` php
+Route::get('/', function () {
+    return view('greeting', ['name' => 'Finn']);
+});
+```
+
+Kita dapat menampilkan isi dari variabel name dengan menambahkan kode seperti berikut dalam file templatenya.
+`Hello, {{ $name }}.`
+
+### Fastify
+
+Untuk menggunakan templating dengan Fastify, kita dapat menginstall plugin `@fastify/view` dengan menjalankan perintah berikut.
+`npm i @fastify/view`.
+
+Plugin `@fastify/view` mensupport templating engine berikut:
+- ejs
+- nunjucks
+- pug
+- handlebars
+- mustache
+- art-template
+- twig
+- liquid
+- doT
+- eta
+
+Berikut adalah contoh kode untuk merender template, dan menambahkan variabel `text` di dalam template tersebut.
+
+``` js
+const fastify = require("fastify")();
+
+fastify.register(require("@fastify/view"), {
+  engine: {
+    ejs: require("ejs"),
+  },
+});
+
+fastify.get("/", (req, reply) => {
+  reply.view("/templates/index.ejs", { text: "text" });
+});
+
+fastify.listen({ port: 3000 }, (err) => {
+  if (err) throw err;
+  console.log(`server listening on ${fastify.server.address().port}`);
+});
+```
+
 ## Referensi
 
 - https://www.tutorialspoint.com/expressjs/index.htm
@@ -154,3 +233,6 @@ fastify.listen({ port }, function (err, address) {
 - https://cleancommit.io/blog/laravel-vs-express-which-framework-is-more-powerful/
 - https://laravel.com/docs/10.x/middleware
 - https://blog.appsignal.com/2023/05/24/advanced-fastify-hooks-middleware-and-decorators.html
+- https://www.tutorialspoint.com/expressjs/expressjs_templating.htm
+- https://laravel.com/docs/10.x/blade
+- https://github.com/fastify/point-of-view
