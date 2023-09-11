@@ -111,6 +111,37 @@ Route::get('/profile', function () {
 ```
 
 ### Fastify
+Untuk menggunakan middleware dalam Fastify, kita harus menginstall plugin eksternal seperti `@fastify/express` atau `@fastify/middie`. Berikut adalah contoh menggunakan middleware `cookie-parser`.
+
+``` js
+import Fastify from "fastify";
+import middie from "@fastify/middie";
+import cookieParser from "cookie-parser";
+ 
+const fastify = Fastify({
+  logger: true,
+});
+ 
+await fastify.register(middie);
+ 
+fastify.use(cookieParser());
+ 
+fastify.get("/", function (request, reply) {
+  console.log("Cookies: ", request.raw.cookies);
+  reply.send("Hello world!");
+});
+ 
+const port = process.env.PORT || 3000;
+ 
+fastify.listen({ port }, function (err, address) {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+ 
+  fastify.log.info(`Fastify is listening on port: ${address}`);
+});
+```
 
 ## Templating
 
@@ -122,3 +153,4 @@ Route::get('/profile', function () {
 - https://fastify.dev/docs/v3.29.x/Reference/
 - https://cleancommit.io/blog/laravel-vs-express-which-framework-is-more-powerful/
 - https://laravel.com/docs/10.x/middleware
+- https://blog.appsignal.com/2023/05/24/advanced-fastify-hooks-middleware-and-decorators.html
