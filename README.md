@@ -2,8 +2,6 @@
 
 ## Membuat route
 
-### Express
-
 ``` js
 var express = require('express');
 var app = express();
@@ -142,8 +140,6 @@ Kode tersebut akan membuat model baru yang bernama `Person`.
 
 ## Middleware
 
-### Express
-
 ``` js
 var express = require('express');
 var app = express();
@@ -156,8 +152,6 @@ app.use(function(req, res) {
 ```
 
 ## Templating
-
-### Express
 
 Template engine yang sering digunakan dengan Express adalah Pug. Pug dapat diinstall dengan menjalankan command berikut.
 `npm install --save pug`
