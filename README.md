@@ -1,6 +1,7 @@
 # t2pbkk
 
 ## Membuat route
+Untuk membuat route baru, kita dapat menggunakan fungsi dari method yang akan digunakan untuk route tersebut. Misal, jika kita ingin membuat route untuk request method `GET`, kita dapat menggunakan fungsi `app.get()`. Di fungsi ini, kita dapat menambahkan path yang akan digunakan untuk route yang kita buat, dan fungsi yang akan dipanggil ketika kita melakukan GET request ke path tersebut. Berikut adalah contoh kode untuk membuat route baru.
 
 ``` js
 var express = require('express');
@@ -137,6 +138,7 @@ var Person = mongoose.model("Person", personSchema);
 Kode tersebut akan membuat model baru yang bernama `Person`.
 
 ## Membuat service
+
 
 ## Membuat middleware
 
