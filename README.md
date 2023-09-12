@@ -139,7 +139,6 @@ Kode tersebut akan membuat model baru yang bernama `Person`.
 
 ## Membuat service
 
-
 ## Membuat middleware
 
 Untuk membuat middleware, kita dapat menggunakan fungsi `use` pada app yang telah kita buat. Dalam fungsi tersebut, kita menambahkan fungsi dari middleware yang kita buat. Berikut adalah contoh membuat middleware sederhana.
@@ -191,3 +190,5 @@ app.get('/test_template', function(req, res){
 - https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 - https://www.tutorialspoint.com/expressjs/expressjs_database.htm
 - https://dev.to/ericchapman/nodejs-express-part-5-routes-and-controllers-55d3
+- https://github.com/snielsson/simple-service-layer-architecture-for-node-express-apps/blob/master/README.md
+- https://stackoverflow.com/questions/54604954/how-to-use-service-layer-in-node-js
