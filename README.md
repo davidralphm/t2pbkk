@@ -138,7 +138,9 @@ Kode tersebut akan membuat model baru yang bernama `Person`.
 
 ## Membuat service
 
-## Middleware
+## Membuat middleware
+
+Untuk membuat middleware, kita dapat menggunakan fungsi `use` pada app yang telah kita buat. Dalam fungsi tersebut, kita menambahkan fungsi dari middleware yang kita buat. Berikut adalah contoh membuat middleware sederhana.
 
 ``` js
 var express = require('express');
@@ -151,7 +153,7 @@ app.use(function(req, res) {
 });
 ```
 
-## Templating
+## Menggunakan template dan views
 
 Template engine yang sering digunakan dengan Express adalah Pug. Pug dapat diinstall dengan menjalankan command berikut.
 `npm install --save pug`
